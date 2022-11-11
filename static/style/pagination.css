@@ -20,3 +20,13 @@
 
  /* Add a grey background color on mouse-over */
  .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+ li {
+     list-style: none;
+     display: inline-block;
+ }
+
+  @media only screen and (max-width: 500px) {
+
+  }
