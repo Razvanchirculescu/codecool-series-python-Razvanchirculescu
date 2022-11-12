@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- page specific styling -->
-{#    <script defer type="text/javascript" src="{{ url_for('static', filename='js/embed-youtube.js') }}"></script>#}
+    {#    <script defer type="text/javascript" src="{{ url_for('static', filename='js/embed-youtube.js') }}"></script>#}
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
 </head>
 
@@ -67,7 +67,8 @@
 
                             <p>Info:</p>
                             <h2>{{ show['title'] }}</h2>
-                            <p class="small grayed"> Runtime: {{ runtime }} <span class="separator">|</span>Genre: {{ show['genres_list'] }}
+                            <p class="small grayed"> Runtime: {{ runtime }} <span
+                                    class="separator">|</span>Genre: {{ show['genres_list'] }}
                                 <span class="separator">|</span> Released: {{ formatted_date }}
                                 <span class="separator">|</span> {{ show['rating_string'] }} <span
                                         class="fa fa-star checked"></span></p>
@@ -88,45 +89,40 @@
 
                 {% endif %}
             {% endfor %}
-         <div >
+            <div>
 
-            <div class="card">
-            <p>Seasons:</p>
-                <table>
-                    <thead>
+                <div class="card">
+                    <p>Seasons:</p>
+                    <table>
+                        <thead>
                         <tr>
                             <td></td>
                             <td>Season</td>
                             <td>Overview</td>
                         </tr>
 
-                            {% for season in seasons %}
-                                <tr>
-                            <td>{{ season.season_number}}</td>
-                            <td>{{ season.title }}</td>
-                                    {% if season.overview %}
-                                     <td>{{ season.overview }}</td>
-                                        {% else %}
-                                        <td></td>
-                                    {% endif %}
-                                 </tr>
-                            {% endfor %}
+                        {% for season in seasons %}
+                            <tr>
+                                <td>{{ season.season_number }}</td>
+                                <td>{{ season.title }}</td>
+                                {% if season.overview %}
+                                    <td>{{ season.overview }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
 
-                    </thead>
-                </table>
-            <br>
+                        </thead>
+                    </table>
+                    <br>
+                    <a onclick="history.back()">Back</a>
+                    <br><br>
+                    <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
+                    <br>
+                    <a class="link" href="/">Homepage</a> <br>
 
-            <button onclick="history.back()">Back</button>
-            <br><br><br>
-            <button id="myButton" class="float-left submit-button">All shows</button>
-
-            <script type="text/javascript">
-                document.getElementById("myButton").onclick = function () {
-                    location.href = "http://127.0.0.1:5000/";
-                };
-            </script>
-
-        </div>
+                </div>
     </section>
     <footer>
         Copyright, obviouslyyyyyy!

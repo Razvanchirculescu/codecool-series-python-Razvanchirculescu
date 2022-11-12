@@ -73,34 +73,20 @@
             <p>100 Actors</p>
             <div class="card">
                 {% for actor_name in actors %}
-            <ul id="actors" style="list-style: none;">
-                <li id="modalBtn" data-toggle="modal" data-target="#exampleModal" data-id={{ actor_name.id }}>
-                        {{ actor_name['name'].split(" ")[0] }}
-                </li>
-            </ul>
-            {% endfor %}
-{#                {% for actor in actors %}#}
-{#                    <ul style="list-style: none;">#}
-{#                        <li>#}
-{#                            <button id="modalBtn" type="button" data-toggle="modal" data-target="#exampleModal"#}
-{#                                    data-id={{ actor.id }}>{{ actor['name'].split(" ")[0] }}</button>#}
-{#                        </li>#}
-{#                    </ul>#}
-{##}
-{#                {% endfor %}#}
-
+                    <ul id="actors" style="list-style: none;">
+                        <li id="modalBtn" data-toggle="modal" data-target="#exampleModal" data-id={{ actor_name.id }}>
+                            {{ actor_name['name'].split(" ")[0] }}
+                        </li>
+                    </ul>
+                {% endfor %}
             </div>
 
             <br>
-            <button onclick="history.back()">Back</button>
-            <br><br><br>
-            <button id="myButton" class="float-left submit-button">All shows</button>
-
-            <script type="text/javascript">
-                document.getElementById("myButton").onclick = function () {
-                    location.href = "http://127.0.0.1:5000/";
-                };
-            </script>
+            <a class="link" onclick="history.back()">Back</a>
+            <br><br>
+            <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
+            <br>
+            <a class="link" href="/" >Homepage</a> <br>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel"
@@ -108,21 +94,12 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> </h5>
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-{#                    {% for elem in actors %}#}
-{#                            <ol class="first-list">#}
-{##}
-{##}
-{#                                    <li>{{ elem.death }}</li>#}
-{##}
-{##}
-{#                            </ol>#}
-{#                    {% endfor %}#}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

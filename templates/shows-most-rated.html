@@ -7,8 +7,15 @@
 
     <title>Shows</title>
 
+
     <!-- Import Montserrat font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+{#        <!-- Import DataTable -->#}
+{##}
+{#    <link href="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" rel="stylesheet">#}
+{#    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">#}
+{#    <link href="https://code.jquery.com/jquery-3.5.1.js" rel="stylesheet">#}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
@@ -27,6 +34,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
 
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <!-- page specific styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
 </head>
@@ -52,27 +61,27 @@
         </div>
         <nav class="breadcrumb">
             <font size="20"></font>
-<div class="pagination">
+            <div class="pagination">
 
-<a href="#">&laquo;</a>
-            {% for page in range(0, 68) %}
-                <a href="{{ (page | string) }}">{{ page }}</a>
-            {% endfor %}
-<a href="#">&raquo;</a>
-</div>
+                <a href="#">&laquo;</a>
+                {% for page in range(0, 68) %}
+                    <a href="{{ (page | string) }}">{{ page }}</a>
+                {% endfor %}
+                <a href="#">&raquo;</a>
+            </div>
 
         </nav>
 
         <div class="card">
             Top 15 best rated shows:
-            <table>
+            <table id="mostRatedTable">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Year</th>
-                    <th>Runtime</th>
-                    <th>Rating</th>
-                    <th>Genres</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Title &#8597;</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Year &#8597;</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Runtime &#8597;</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Rating &#8597;</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Genres &#8597;</th>
                     <th>Trailer</th>
                     <th>Homepage</th>
                 </tr>
@@ -80,7 +89,7 @@
                 <tbody>
 
                 {% for show in shows %}
-                    <tr>
+                    <tr class="item">
                         <td><a href="{{ '/tv-show/' + (show['id'] | string) }}">{{ show['title'] }}</a></td>
                         <td>{{ show['year'] }}</td>
                         <td>{{ show['runtime'] }}</td>
@@ -106,18 +115,13 @@
 
             </table>
             <br>
-            <div>
 
-                <button onclick="history.back()">Back</button>
-                <br><br><br>
-                <button id="myButton" class="float-left submit-button">All shows</button>
 
-                <script type="text/javascript">
-                    document.getElementById("myButton").onclick = function () {
-                        location.href = "http://127.0.0.1:5000/";
-                    };
-                </script>
-            </div>
+            <a class="link" onclick="history.back()">Back</a>
+            <br><br><br>
+            <a class="link" href="/">Homepage</a>
+
+
         </div>
     </section>
     <footer>
