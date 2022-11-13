@@ -1,10 +1,15 @@
-from flask import Flask, render_template, url_for, jsonify
+from flask import Flask, render_template, url_for, jsonify,\
+                    request, redirect, session
+
+import code_password
 from data import queries
 from dotenv import load_dotenv
-from datetime import timedelta
+import bcrypt
 
 load_dotenv()
 app = Flask('codecool_series')
+
+app.secret_key = b'_5#y2L"F4Q8z\xec]/'
 
 
 @app.route('/')
@@ -70,6 +75,53 @@ def all_shows_actor_starred(id):
 def actors_for_simulation_shows(id):
     actors_in_sim_shows = queries.get_show_actors(id)
     return jsonify(actors_in_sim_shows)
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    message = ""
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        if queries.valid_login(username):
+            hash_pass = queries.valid_login(username)[0]["password"]
+            if code_password.verify_password(password, hash_pass):
+                session["username"] = username
+                return redirect(url_for("index"))
+            else:
+                message = "Invalid password"
+        else:
+            message = "Invalid username"
+
+    return render_template("login.html", message=message)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def registration_user():
+    message = ""
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        try:
+            if username and password:
+                hash_pass = str(code_password.hash_password(password))
+                for elem in queries.get_all_users():
+                    if username == elem["username"]:
+                        raise KeyError
+                session["username"] = username
+                queries.add_user_to_database(username, hash_pass)
+                return redirect(url_for("index"))
+        except KeyError:
+            pass
+        message = "Invalid registration attempt"
+    return render_template("register.html", message=message)
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
 
 
 def main():

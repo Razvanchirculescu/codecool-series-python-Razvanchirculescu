@@ -31,18 +31,13 @@ buttonsSim.forEach(function (button) {
         document.querySelector('.modal-body').innerHTML = contentOutput;
     });
  });
-// buttonsSim.forEach( function (button){
-//     button.addEventListener("click", async function() {
-//         console.log(button)
-//         let buttonId = button.dataset.id;
-//         let response = await fetch(`/api/actors_for_simulation_shows/${buttonId}`)
-//         let apiResp = await response.json();
-//         let titleOutput = `${apiResp[0]}`;
-//         let contentOut = ``;
-//         for(let i=0; i < apiResp.length; ++i) {
-//             contentOut += `<li>${apiResp[i]}</li>`}
-//             $(`#myModal${a}`).modal('show');
-//             document.querySelector('.modal-title').innerHTML = titleOutput;
-//         document.querySelector('.modal-body').innerHTML = contentOut;
-//     });
-//  });
+
+
+
+const button = document.querySelectorAll('.register_login_button');
+
+const disableButton = () => {
+    button.disabled = true;
+};
+
+button.addEventListener('click', disableButton);

@@ -101,3 +101,21 @@ def get_shows_from_1980s():
         LIMIT 10
         """
     )
+
+
+def add_user_to_database(username, password):
+    return data_manager.execute_select(
+        "INSERT INTO users (username, password) VALUES (%(username)s, %(password)s) RETURNING *;",
+        {"username": username, "password": password},
+    )
+
+
+def get_all_users():
+    return data_manager.execute_select("SELECT * FROM users;")
+
+
+def valid_login(username):
+    return data_manager.execute_select(
+        "SELECT password FROM users WHERE username = %(username)s;",
+        {"username": username},
+    )
