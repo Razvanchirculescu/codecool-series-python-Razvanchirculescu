@@ -62,13 +62,31 @@
         <span id="header-title" class="title">Codecool Series DB </span>
 
 
+
         <div id="header-auth">
-            <a href="/register"><button type="submit" id="bt-register" class="register_login_button">Register</button></a>
-            <a href="/login"><button type="button" id="bt-login" class="register_login_button">Login</button></a>
-            <a href="/logout"><button type="button" id="bt-logout" class="logout_button">Logout</button> </a>
+            <a href="/register">
+                <button type="submit" id="bt-register" class="register_login_button">Register</button>
+            </a>
+            <a href="/login">
+                <button type="button" id="bt-login" class="register_login_button">Login</button>
+            </a>
+            <a href="/logout">
+                <button type="button" id="bt-logout" class="logout_button">Logout</button>
+            </a>
+        <script>
+            {% if  session.username  %}
+                    document.getElementById("bt-register").disabled = true;
+                    document.getElementById("bt-login").disabled = true;
+                    document.getElementById("bt-logout").disabled = false;
+            {% else %}
+                    document.getElementById("bt-register").disabled = false;
+                    document.getElementById("bt-login").disabled = false;
+                    document.getElementById("bt-logout").disabled = true;
+            {% endif %}
+    </script>
             <a href="#" style="color: #dddddd" class="sessionState">
                 {% if session['username'] %}
-                Logged in as: {{ session['username'] }}
+                    Logged in as: {{ session['username'] }}
                 {% else %}
                     Not logged in
                 {% endif %}
