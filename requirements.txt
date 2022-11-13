@@ -2,4 +2,5 @@ Flask~=2.0
 python-dotenv~=0.13
 psycopg2-binary~=2.9
 requests~=2.19
-
+MarkupSafe~=2.0
+Jinja2==3.1.2

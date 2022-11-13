@@ -1,56 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
+
+
+{% extends 'base.html' %}
+
+{% block title %}
     {% for show in shows %}
         {% if show['id'] == show_id %}
-            <title>{{ show['title'] }}</title>
+            {{ show['title'] }}
         {% endif %}
-    {% endfor %}
-
-    <!-- Import Montserrat font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-    <!-- Normalize.css fixes lot of differences between browsers default styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"/>
-
-    <!-- project wide styling -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/site.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/background.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/card.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/table.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- page specific styling -->
-    {#    <script defer type="text/javascript" src="{{ url_for('static', filename='js/embed-youtube.js') }}"></script>#}
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
-</head>
-
-<body>
-<div id="body-wrapper">
-    <header class="clearfix">
-        <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
-        <span id="header-title" class="title">
-                    Codecool Series DB
-                </span>
-        <div id="header-auth">
-            <button type="button" id="bt-register">Register</button>
-            <button type="button" id="bt-login">Login</button>
-        </div>
-    </header>
+    {% endfor %} {% endblock %}
+{% block h1 %} Show details {% endblock %}
+{% block h2 %}<small>Links</small>{% endblock %}
+{% block content %}
     <section>
-        <h1 class="title text-center">Shows</h1>
         <div class="card">
 
             {% for show in shows %}
@@ -115,23 +77,11 @@
 
                         </thead>
                     </table>
-                    <br>
-                    <a onclick="history.back()">Back</a>
-                    <br><br>
-                    <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
-                    <br>
-                    <a class="link" href="/">Homepage</a> <br>
+
 
                 </div>
+            </div>
     </section>
-    <footer>
-        Copyright, obviouslyyyyyy!
-    </footer>
-</div>
-<div class="background">
-    <div class="dark-blue-layer"></div>
-    <div class="light-blue-layer"></div>
-</div>
-</body>
 
-</html>
+
+{% endblock %}

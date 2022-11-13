@@ -1,73 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+{% extends 'base.html' %}
 
-    <title>Shows</title>
-
-
-    <!-- Import Montserrat font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-{#        <!-- Import DataTable -->#}
-{##}
-{#    <link href="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" rel="stylesheet">#}
-{#    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">#}
-{#    <link href="https://code.jquery.com/jquery-3.5.1.js" rel="stylesheet">#}
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-    <!-- Normalize.css fixes lot of differences between browsers default styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"/>
-
-    <!-- project wide styling -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/site.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/background.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/card.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/table.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
-
-    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <!-- page specific styling -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
-</head>
-
-<body>
-<div id="body-wrapper">
-    <header class="clearfix">
-        <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
-        <span id="header-title" class="title">
-                    Codecool Series DB
-                </span>
-        <div id="header-auth">
-            <button type="button" id="bt-register">Register</button>
-            <button type="button" id="bt-login">Login</button>
-        </div>
-    </header>
+{% block title %} Shows {% endblock %}
+{% block h1 %} Shows {% endblock %}
+{% block h2 %}<small>Links</small>{% endblock %}
+{% block content %}
     <section>
-        <h1 class="title text-center">Shows</h1>
-        <div class="card">
-            <h2>Welcome TV show lovers!</h2>
-            <p>This great site is happy to bring you your favourite TV show's details.</p>
 
-        </div>
         <nav class="breadcrumb">
             <font size="20"></font>
             <div class="pagination">
 
-                <a href="#">&laquo;</a>
-                {% for page in range(0, 68) %}
+                {% for page in range(66) %}
                     <a href="{{ (page | string) }}">{{ page }}</a>
                 {% endfor %}
-                <a href="#">&raquo;</a>
+
             </div>
 
         </nav>
@@ -77,11 +23,21 @@
             <table id="mostRatedTable">
                 <thead>
                 <tr>
-                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Title &#8597;</th>
-                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Year &#8597;</th>
-                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Runtime &#8597;</th>
-                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Rating &#8597;</th>
-                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')" style="cursor:pointer; text-align: left">Genres &#8597;</th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')"
+                        style="cursor:pointer; text-align: left">Title &#8597;
+                    </th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')"
+                        style="cursor:pointer; text-align: left">Year &#8597;
+                    </th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')"
+                        style="cursor:pointer; text-align: left">Runtime &#8597;
+                    </th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')"
+                        style="cursor:pointer; text-align: left">Rating &#8597;
+                    </th>
+                    <th onclick="w3.sortHTML('#mostRatedTable', '.item', 'td:nth-child(1)')"
+                        style="cursor:pointer; text-align: left">Genres &#8597;
+                    </th>
                     <th>Trailer</th>
                     <th>Homepage</th>
                 </tr>
@@ -114,25 +70,10 @@
                 </tbody>
 
             </table>
-            <br>
 
-
-            <a class="link" onclick="history.back()">Back</a>
-            <br><br><br>
-            <a class="link" href="/">Homepage</a>
 
 
         </div>
+
     </section>
-    <footer>
-        Copyright, obviouslyyyyy!!
-    </footer>
-</div>
-
-<div class="background">
-    <div class="dark-blue-layer"></div>
-    <div class="light-blue-layer"></div>
-</div>
-</body>
-
-</html>
+   {% endblock %}

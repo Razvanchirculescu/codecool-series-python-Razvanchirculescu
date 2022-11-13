@@ -15,39 +15,34 @@ let buttons  = document.querySelectorAll("#modalBtn")
     });
  });
 
-//
-// function sortTable(table, col, reverse) {
-//     let tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
-//         tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
-//         i;
-//     reverse = -((+reverse) || -1);
-//     tr = tr.sort(function (a, b) { // sort rows
-//         return reverse // `-1 *` if want opposite order
-//             * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
-//                 .localeCompare(b.cells[col].textContent.trim())
-//                );
+let buttonsSim = document.querySelectorAll("#modalBtnSim")
+buttonsSim.forEach(function (button) {
+  button.addEventListener('click', async function() {
+    console.log(button);
+    let a = button.dataset.id;
+    let response = await fetch(`/api/actors_for_simulation_shows/${a}`);
+    let apiResponse = await response.json();
+    let titleOutput = `Starring`;
+    let contentOutput = ``;
+    for (let i=0; i < apiResponse.length ; ++i) {
+        contentOutput += `<li>${apiResponse[i]['name']}</li>`}
+        $(`#myModal${a}`).modal('show');
+        document.querySelector('.modal-title').innerHTML = titleOutput;
+        document.querySelector('.modal-body').innerHTML = contentOutput;
+    });
+ });
+// buttonsSim.forEach( function (button){
+//     button.addEventListener("click", async function() {
+//         console.log(button)
+//         let buttonId = button.dataset.id;
+//         let response = await fetch(`/api/actors_for_simulation_shows/${buttonId}`)
+//         let apiResp = await response.json();
+//         let titleOutput = `${apiResp[0]}`;
+//         let contentOut = ``;
+//         for(let i=0; i < apiResp.length; ++i) {
+//             contentOut += `<li>${apiResp[i]}</li>`}
+//             $(`#myModal${a}`).modal('show');
+//             document.querySelector('.modal-title').innerHTML = titleOutput;
+//         document.querySelector('.modal-body').innerHTML = contentOut;
 //     });
-//     for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
-// }
-//
-// function makeSortable(table) {
-//     let th = table.tHead, i;
-//     th && (th = th.rows[0]) && (th = th.cells);
-//     if (th) i = th.length;
-//     else return; // if no `<thead>` then do nothing
-//     while (--i >= 0) (function (i) {
-//         let dir = 1;
-//         th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
-//     }(i));
-// }
-//
-// function makeAllSortable(parent) {
-//     parent = parent || document.body;
-//     let t = parent.getElementsByTagName('table'), i = t.length;
-//     while (--i >= 0) makeSortable(t[i]);
-// }
-
-window.onload = function () {makeAllSortable();};
-
-
-
+//  });

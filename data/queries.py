@@ -51,7 +51,7 @@ def get_show_by_id():
 def get_show_actors(_id_):
     return data_manager.execute_select(
         """
-        SELECT a.name, a.death, a.birthday, a.death, a.biography
+        SELECT a.name, a.birthday, a.death, a.biography
         FROM actors
         JOIN show_characters sc on actors.id = sc.actor_id
         JOIN actors a ON a.id = sc.actor_id
@@ -90,3 +90,14 @@ def get_shows_starred(id):
     INNER JOIN actors a on a.id = sc.actor_id
     WHERE actor_id = %(id)s
     """, {'id': id})
+
+
+def get_shows_from_1980s():
+    return data_manager.execute_select(
+        """
+        SELECT s.id, s.title, ROUND (s.rating,2) as rating from shows s 
+        WHERE EXTRACT(YEAR from s.year) BETWEEN '1980' AND '1990'
+        ORDER BY s.rating DESC
+        LIMIT 10
+        """
+    )

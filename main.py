@@ -18,6 +18,12 @@ def design():
     return render_template('design.html')
 
 
+@app.route('/simulation1')
+def simulations():
+    shows = queries.get_shows_from_1980s()
+    return render_template('simulation1.html', shows=shows)
+
+
 @app.route('/shows/most-rated/<int:_id>')
 def most_rated(_id):
     offset = _id * 15
@@ -58,6 +64,12 @@ def show(show_id):
 def all_shows_actor_starred(id):
     shows = queries.get_shows_starred(id)
     return jsonify(shows)
+
+
+@app.route('/api/actors_for_simulation_shows/<id>')
+def actors_for_simulation_shows(id):
+    actors_in_sim_shows = queries.get_show_actors(id)
+    return jsonify(actors_in_sim_shows)
 
 
 def main():

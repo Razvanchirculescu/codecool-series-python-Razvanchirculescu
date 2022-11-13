@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>100 Actors</title>
+    <title>{% block title %}100 Actors{% endblock %}</title>
 
     <!-- Import Montserrat font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -36,6 +36,8 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
     <!-- project wide styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style/site.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/header.css') }}">
@@ -52,78 +54,58 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
 </head>
 
+
 <body>
 <div id="body-wrapper">
     <header class="clearfix">
         <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
-        <span id="header-title" class="title">
-                    Codecool Series DB
-                </span>
+        <span id="header-title" class="title">Codecool Series DB</span>
+
         <div id="header-auth">
             <button type="button" id="bt-register">Register</button>
             <button type="button" id="bt-login">Login</button>
         </div>
     </header>
     <section>
+        <h1 class="title text-center">{% block h1 %}{% endblock %}</h1>
+        <div class="card">
+            <h2>{% block h2 %}Links{% endblock %}</h2>
 
-        <h1 class="title text-center">Actors page</h1>
+            <ul>
+                <li>
+                    <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
+                </li>
+                <li>
+                    <a class="link" href="/simulation1">Simulation 1</a> <br>
+                </li>
+                <li>
+                    <a class="link" href="/actors/">Actors</a>
+                </li>
 
-
-        <div class="card detailed-view">
-            <p>100 Actors</p>
-            <div class="card">
-                {% for actor_name in actors %}
-                    <ul id="actors" style="list-style: none;">
-                        <li id="modalBtn" data-toggle="modal" data-target="#exampleModal" data-id={{ actor_name.id }}>
-                            {{ actor_name['name'].split(" ")[0] }}
-                        </li>
-                    </ul>
-                {% endfor %}
-            </div>
-
-            <br>
-            <a class="link" onclick="history.back()">Back</a>
-            <br><br>
-            <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
-            <br>
-            <a class="link" href="/" >Homepage</a> <br>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="result"></div>
-        </div>
-        <div>
-
+            </ul>
 
         </div>
+
     </section>
-</div>
 
-<footer>
-    Copyright, bla-bla
-</footer>
+    {% block content %}{% endblock %}
+    <div class="card">
+        <br>
+        <a class="link" onclick="history.back()">Back</a>
+        <br>
+        <a class="link" href="/shows/most-rated/0">Most rated shows</a>
+        <br>
+        <a class="link" href="/">Homepage</a>
+    </div>
+    <footer>
+
+        Copyright, obviouslyyyy!!
+    </footer>
+</div>
 <div class="background">
     <div class="dark-blue-layer"></div>
     <div class="light-blue-layer"></div>
 </div>
-</body>
 
+</body>
 </html>
