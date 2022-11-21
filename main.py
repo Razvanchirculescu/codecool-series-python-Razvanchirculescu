@@ -23,11 +23,6 @@ def design():
     return render_template('design.html')
 
 
-@app.route('/simulation1')
-def simulations():
-    shows = queries.get_shows_from_1980s()
-    return render_template('simulation1.html', shows=shows)
-
 
 @app.route('/shows/most-rated/<int:_id>')
 def most_rated(_id):
@@ -124,9 +119,130 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route('/simulation1')
+def simulations():
+    shows = queries.get_shows_from_1980s()
+    return render_template('simulation1.html', shows=shows)
+
+
+@app.route("/sim2")
+def sim2():
+    most_roles_played = queries.sim2()
+    return render_template("sim2.html", most_roles_played=most_roles_played)
+
+
+@app.route('/api/sim2/<actor_name>/')
+def all_shows_actor_started(actor_name):
+    shows = queries.sim2_by_actor_name(actor_name)
+    return jsonify(shows)
+
+
+@app.route('/sim3')
+def sim3():
+    all_genres = queries.sim3()
+    return render_template('sim3.html', all_genres=all_genres)
+
+
+@app.route('/api/sim3/<genres_name>/')
+def sim4_top_rated_for_genre(genres_name):
+    top_10_movies_for_genre = queries.sim3_top_rated_shows(genres_name)
+    return jsonify(top_10_movies_for_genre)
+
+
+@app.route('/sim4')
+def sim4():
+    runtime = queries.sim4_shortest_runtime()
+    return render_template('sim4.html', runtime=runtime)
+
+
+@app.route('/api/sim4/<show_genre>')
+def sim4_show_genres(show_genre):
+    show_genres = queries.sim4_show_genres(show_genre)
+    return jsonify(show_genres)
+
+
+@app.route('/sim5')
+def sim5_10_latest_shows():
+    ten_latest = queries.sim5_get_latest_10_shows()
+    return render_template('sim5.html', ten_latest=ten_latest)
+
+
+@app.route('/api/ten_latest/<show_id>')
+def actors_in_ten_latest(show_id):
+    actors_starring_in_ten_latest = queries.sim5_actors_starring_in_10_latest(show_id);
+    return jsonify(actors_starring_in_ten_latest)
+
+
+@app.route('/sim6')
+def sim6_10_oldest_released_shows():
+    oldest_shows = queries.sim6_first_10_released_shows()
+    return render_template('sim6.html', oldest_shows=oldest_shows)
+
+
+@app.route('/api/ten_oldest/<show_id>')
+def sim6_seasons_and_episodes_count(show_id):
+    seasons_and_episodes = queries.sim6_seasons_and_number_of_episodes_each(show_id)
+    return jsonify(seasons_and_episodes)
+
+
+@app.route('/sim7')
+def sim7_all_action_shows():
+    action_shows = queries.sim7_all_action_shows()
+    return render_template('sim7.html', action_shows=action_shows)
+
+
+@app.route('/api/runtime/<show_id>')
+def sim7_runtime(show_id):
+    runtime = queries.sim7movie_runtime(show_id)
+    return jsonify(runtime)
+
+
+@app.route('/sim8')
+def sim8_actors_in_shows():
+    actors = queries.sim8_all_action_shows()
+    return render_template('sim8.html', actors=actors)
+
+
+@app.route('/api/biography/<id>')
+def sim8_actor_biography(id):
+    biography = queries.sim8_biography(id)
+    return jsonify(biography)
+
+
+@app.route('/all_simulations/')
+def all_simulations():
+    return render_template('all_simulations.html')
+
+
+@app.route('/sim9')
+def sim9_all_genres_with_over_6_movies():
+    genres_sim9 = queries.sim9_genres_with_over6shows()
+    return render_template('sim9.html', genres_sim9=genres_sim9)
+
+
+@app.route('/api/shows/<id>')
+def sim9_shows_for_genre(id):
+    shows_for_genre = queries.sim9_movies_for_genre(id)
+    return jsonify(shows_for_genre)
+
+
+@app.route('/PA')
+def actors_in_musicals():
+    actors_to_display = queries.pa_actors_in_musicals()
+    return render_template('PA.html', actors_to_display=actors_to_display)
+
+
+@app.route('/api/PA/<actor_id>')
+def runtime_for_actor(actor_id):
+    total_runtime = queries.pa_total_show_runtime_for_actor(actor_id)
+    print(total_runtime)
+    return jsonify(total_runtime)
+
+
 def main():
     app.run(debug=True)
 
 
 if __name__ == '__main__':
     main()
+

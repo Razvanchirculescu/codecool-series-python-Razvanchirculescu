@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Sim3{% endblock %}
+{% block h1 %}Sim 3 || <small>Click on list for more details</small> {% endblock %}
+{% block content %}
+
+    <section>
+        <div class="card">
+
+
+            <ul>
+
+                {% for genre in all_genres %}
+
+                    <li class="genres" data-name="{{ genre.id }}">{{ genre.name }}</li>
+
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="card">
+            <ul class="popupSim3"></ul>
+        </div>
+
+    </section>
+
+{% endblock %}

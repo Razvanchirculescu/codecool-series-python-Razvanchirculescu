@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Sim4{% endblock %}
+{% block h1 %} Sim4 || <small>Click on list for more details</small> {% endblock %}
+
+{% block content %}
+<section>
+    <div class="card">
+        <ul>
+{% for movie in runtime %}
+
+    <li class="runtime" data-id="{{ movie.id }}">{{ movie.title }}</li>
+{% endfor %}
+</ul>
+
+    <div class="card">
+<ul class="popupSim4"></ul>
+<div>
+
+    </div>
+</section>
+{% endblock %}

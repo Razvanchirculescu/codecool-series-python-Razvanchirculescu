@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Sim6{% endblock %}
+{% block h1 %} Sim6 || <small>Click on list for more details</small> {% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="card">
+
+            <ul class="seasons">
+                {% for show in oldest_shows %}
+                <li class="tenOldest" data-id="{{ show.id }}">{{ show.title }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+    <div class="card">
+
+        <ul class="popupSim6">
+
+
+        </ul>
+
+    </div>
+
+    </section>
+
+
+
+
+{% endblock %}

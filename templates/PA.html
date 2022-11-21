@@ -1,0 +1,25 @@
+{% extends'base.html' %}
+{% block title %}PA{% endblock %}
+{% block h1 %} Actors in musicals {% endblock %}
+{% block content %}
+
+
+    <section id="section">
+        <div class="card" id="div1">
+            <ul>
+                {% for actor in actors_to_display %}
+                    <li class="actorsPA" data-id="{{ actor.id }}"> {{ actor.name }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <div class="card" id="2">
+            <ul id="listPa"></ul>
+        </div>
+
+
+    </section>
+
+{% endblock %}
+

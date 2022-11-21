@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>{% block title %}100 Actors{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- Import Montserrat font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -55,7 +55,7 @@
 </head>
 
 
-<body>
+<body id="body">
 <div id="body-wrapper">
     <header class="clearfix">
         <img id="header-logo" src="{{ url_for('static', filename='assets/codecool-logo.png') }}" alt="Codecool Logo">
@@ -83,7 +83,7 @@
                     document.getElementById("bt-login").disabled = false;
                     document.getElementById("bt-logout").disabled = true;
             {% endif %}
-    </script>
+        </script>
             <a href="#" style="color: #dddddd" class="sessionState">
                 {% if session['username'] %}
                     Logged in as: {{ session['username'] }}
@@ -103,12 +103,17 @@
                 <li>
                     <a class="link" href="/shows/most-rated/0">Most rated shows</a> <br>
                 </li>
-                <li>
-                    <a class="link" href="/simulation1">Simulation 1</a> <br>
-                </li>
+
                 <li>
                     <a class="link" href="/actors/">Actors</a>
                 </li>
+                <li>
+                    <a class="link" href="/all_simulations/">All simulations</a> <br>
+                </li>
+                 <li>
+                    <a class="link" href="/PA/">PA</a> <br>
+                </li>
+
 
             </ul>
 

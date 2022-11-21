@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    {% for show in shows %}
-        {% if show['id'] == show_id %}
-            {{ show['title'] }}
-        {% endif %}
-    {% endfor %} {% endblock %}
+{% block title %}100 Actors {% endblock %}
 {% block h1 %} `Hundred actors by first name {% endblock %}
 {% block h2 %}<small>Links</small>{% endblock %}
 {% block content %}

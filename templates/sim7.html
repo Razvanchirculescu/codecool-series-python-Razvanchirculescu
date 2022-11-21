@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Sim7{% endblock %}
+{% block h1 %}Sim 7 || <small>Click on list for more details</small>{% endblock %}
+{% block content %}
+<section>
+    <div class="card">
+
+        <ul class="actionShows">
+            {% for show in action_shows %}
+            <li class="actShows" data-id="{{ show.id }}">{{ show.title }}</li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+
+    <div class="card">
+    <ul class="popupSim7"></ul>
+    </div>
+</section>
+{% endblock %}
