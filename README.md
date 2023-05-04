@@ -30,4 +30,5 @@ To get started with the application, follow these steps:
 
 ## Screenshot
 
-![screenshot](https://drive.google.com/file/d/1Aj7j_bVIv4FHYqOlPQC0iOlgF9_IsdXV/view?usp=sharing)
+![screenshot](https://drive.google.com/uc?id=1Aj7j_bVIv4FHYqOlPQC0iOlgF9_IsdXV)
+
