@@ -20,6 +20,10 @@ The current version of CodeCool Series includes the following features:
 - Register: Work in progress.
 - Login: Work in progress.
 
+Future features(estimated end of May 2023)
+
+- Being able to login and save favorite movies to "Your List"
+
 ## Getting Started
 
 To get started with the application, follow these steps:
