@@ -8,6 +8,7 @@ CodeCool Series is website that contains information about more than 1000 TV ser
 - JavaScript: Frontend development language
 - CSS/HTML: Markup language and styling for the frontend
 - PostgreSQL: Relational database management system
+- Flask : routing
 
 ## Features
 
