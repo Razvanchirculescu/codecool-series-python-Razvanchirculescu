@@ -34,6 +34,6 @@ To get started with the application, follow these steps:
 4. Start the application: `python app.py`
 
 ## Screenshot
-
-![screenshot](https://drive.google.com/uc?id=1Aj7j_bVIv4FHYqOlPQC0iOlgF9_IsdXV)
-
+![2](https://drive.google.com/uc?id=15isIogOu6BhKpf9RzvT4NPEdouxUCSdZ)
+![3](https://drive.google.com/uc?id=1Gx5QwyYiplq6Q1BjIe6jTekn351qowvt)
+![1](https://drive.google.com/uc?id=1Aj7j_bVIv4FHYqOlPQC0iOlgF9_IsdXV)
