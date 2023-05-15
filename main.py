@@ -4,7 +4,6 @@ from flask import Flask, render_template, url_for, jsonify,\
 import code_password
 from data import queries
 from dotenv import load_dotenv
-import bcrypt
 
 load_dotenv()
 app = Flask('codecool_series')
