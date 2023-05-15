@@ -5,6 +5,14 @@ DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS seasons;
 DROP TABLE IF EXISTS shows;
+DROP TABLE IF EXISTS users;
+
+
+CREATE TABLE users(
+    id       INTEGER PRIMARY KEY NOT NULL,
+    username    VARCHAR(200)        NOT NULL,
+    password    VARCHAR(200)        NOT NULL
+);
 
 
 CREATE TABLE shows (
