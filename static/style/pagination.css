@@ -1,32 +1,35 @@
 /* Pagination links */
-.pagination{
-   width: 100%;
-   margin-top: 5px;
-   text-align: center;
- }
- .pagination a {
-   color: black;
-   padding: 10px;
-   line-height: 3;
-   text-decoration: none;
-   transition: background-color .3s;
- }
+.pagination {
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+}
 
- /* Style the active/current link */
- .pagination a.active {
-   background-color: dodgerblue;
-   color: white;
- }
+.pagination a {
+    color: black;
+    padding: 10px;
+    line-height: 3;
+    text-decoration: none;
+    transition: background-color .3s;
+}
 
- /* Add a grey background color on mouse-over */
- .pagination a:hover:not(.active) {background-color: #ddd;}
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
 
 
- li {
-     list-style: none;
-     display: inline-block;
- }
+li {
+    list-style: none;
+    display: inline-block;
+}
 
-  @media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) {
 
-  }
+}

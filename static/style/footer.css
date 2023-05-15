@@ -9,7 +9,7 @@ footer {
     padding: 6px;
 
     -webkit-transform: rotate(-1.5deg) scale(2);
-            transform: rotate(-1.5deg) scale(2);
+    transform: rotate(-1.5deg) scale(2);
     text-align: center;
 
     color: #fff;

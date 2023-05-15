@@ -192,9 +192,9 @@ buttonActorsTotalRuntime.forEach(function (button) {
 })
 
 function createData(value, whereToAdd) {
-                const newContent = document.createTextNode(value)
-                whereToAdd.appendChild(newContent)
-                document.getElementById("listPa").append(whereToAdd)
+    const newContent = document.createTextNode(value)
+    whereToAdd.appendChild(newContent)
+    document.getElementById("listPa").append(whereToAdd)
 }
 
 

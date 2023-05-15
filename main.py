@@ -168,7 +168,7 @@ def sim5_10_latest_shows():
 
 @app.route('/api/ten_latest/<show_id>')
 def actors_in_ten_latest(show_id):
-    actors_starring_in_ten_latest = queries.sim5_actors_starring_in_10_latest(show_id);
+    actors_starring_in_ten_latest = queries.sim5_actors_starring_in_10_latest(show_id)
     return jsonify(actors_starring_in_ten_latest)
 
 
@@ -244,4 +244,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
