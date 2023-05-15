@@ -74,16 +74,16 @@
                 <button type="button" id="bt-logout" class="logout_button">Logout</button>
             </a>
         <script>
-            {% if  session.username  %}
-                    document.getElementById("bt-register").disabled = true;
-                    document.getElementById("bt-login").disabled = true;
-                    document.getElementById("bt-logout").disabled = false;
-            {% else %}
-                    document.getElementById("bt-register").disabled = false;
-                    document.getElementById("bt-login").disabled = false;
-                    document.getElementById("bt-logout").disabled = true;
-            {% endif %}
-        </script>
+        {% if session.username  %}
+            document.getElementById("bt-register").style.display = "none";
+            document.getElementById("bt-login").style.display = "none";
+            document.getElementById("bt-logout").style.display = "inline-block";
+        {% else %}
+            document.getElementById("bt-register").style.display = "inline-block";
+            document.getElementById("bt-login").style.display = "inline-block";
+            document.getElementById("bt-logout").style.display = "none";
+        {% endif %}
+    </script>
             <a href="#" style="color: #dddddd" class="sessionState">
                 {% if session['username'] %}
                     Logged in as: {{ session['username'] }}
